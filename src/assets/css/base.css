@@ -1,0 +1,63 @@
+/* ------------------------------------------------------------------------- */
+/* fonts
+/* ------------------------------------------------------------------------- */
+@font-face {
+  font-family: "pretendard";
+  src: url(../fonts/PretendardVariable.woff2);
+}
+@font-face {
+  font-family: "tt";
+  src: url(../fonts/TT.woff);
+}
+@font-face {
+  font-family: "ttBold";
+  src: url(../fonts/TTTravels-DemiBoldItalic.woff);
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* scrollbar / html / body / utility
+/* ------------------------------------------------------------------------- */
+/*===== scrollbar =====*/
+::-webkit-scrollbar {width: 10px; padding-right: .2rem;}
+::-webkit-scrollbar-track {background-color: transparent;}
+::-webkit-scrollbar-thumb { 
+  background-color: var(--primary); background-clip: padding-box;
+  border: 2px solid transparent; border-radius: 2rem;
+}
+
+/*===== drag-color =====*/
+::selection {background-color: var(--primary); color: var(--WT);}
+
+/*===== html, body =====*/
+html {font-size: 62.5%; scroll-behavior: smooth;}
+body{
+  overflow-x: hidden;
+  background-image: var(--bgimg); background-size: 100%;
+  font-family: "pretendard";
+  transition: all .15s;
+}
+body.noScroll {overflow-y: hidden; touch-action: none;}
+
+
+/*===== utility =====*/
+.soundOnly {
+  width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important;
+  border: 0 !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+/*===== flex-utility =====*/
+
+
+/*===== layOut =====*/
+
+
+/* ------------------------------------------------------------------------- */
+/* form > input, textarea, select, button
+/* ------------------------------------------------------------------------- */
+

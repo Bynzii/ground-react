@@ -1,0 +1,87 @@
+/* ------------------------------------------------------------------------- */
+/* header
+/* ------------------------------------------------------------------------- */
+header {
+  width: 100%; height: 8rem;
+
+  .header-inner {
+    width: calc(100% - 4rem); height: 100%;
+    margin: auto; margin-top: 2rem;
+    padding: 0 2rem;
+    display: flex; align-content: center; justify-content: space-between; gap: 2rem;
+    border-top: 1px solid #000; border-bottom: 1px solid #000;
+
+    .header-logo { max-width: 18rem;
+      > a { 
+        height: 100%; 
+        display: flex; align-items: center; justify-content: center; 
+      }
+    }
+    
+    nav {
+      display: flex; align-items: center; justify-content: center; gap: 3rem;
+
+      ul.gnb {
+        position: relative;
+        height: 100%;
+        display: flex; align-items: center; gap: 2.4rem;
+        font:  600 1.4rem / 1.5 'TT' ;
+
+        > li {
+          position: relative;
+          height: 100%; min-width: 6rem;
+          text-align: center;
+          transition: color .15s linear;
+
+          > a {height: 100%; display: flex; align-items: center; justify-content: center;}
+          &:hover {color: var(--primary);}
+          &:hover ul.depth2 {max-height: 30rem;}
+          
+          ul.depth2 {
+            position: absolute; 
+            top: 100%; left: 50%; transform: translateX(-50%);
+            width: max-content;
+
+            max-height: 0; overflow: hidden;
+            display: flex; flex-direction: column; gap: 1rem;
+            background-color: rgba(0, 0, 0, 0.5); color: var(--WT); 
+            font:  400 1.4rem / 1.5 'Pretendard' ;
+            transition: max-height .4s ease, padding .3s ease; 
+
+            li {padding: 0.8rem 1.6rem;}
+            li:hover {background-color: rgba(0, 0, 0, 0.8); font-weight: 600;}
+          }
+        }
+      }
+
+      .gnbBtn > img {height: 5rem;}
+    }
+  }
+}
+
+/*===== 모바일 메뉴 =====*/
+.mobile-menu {
+  width: 100%; min-height: 100dvh; 
+  padding: 5rem;
+  position: fixed;
+  top: 0; right: 0; transform: translateX(100%);
+  background: var(--bggradi);
+  transition: transform .5s ease;
+
+  &.active {transform: translateX(0);}
+
+  .gnbBtn {
+    width: 4rem; height: 4rem;
+    position: absolute; right: 5rem;
+  }
+  ul {
+    padding-top: 6rem;
+    width: 100%; height: 100%;
+    font: 600 2.8rem / 1.5 'TT';
+    
+    li { margin-bottom: 3.2rem;
+    &:hover {color: var(--primary);}
+    }
+  }
+}
+
