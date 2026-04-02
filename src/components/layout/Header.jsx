@@ -100,7 +100,7 @@ const Header = () => {
       </div>
     </header>
 
-    {/* 전체 메뉴 */}
+    {/* 전체 메뉴 > 모바일 */}
     <div className={isOpen ? 'mobile-menu active' : 'mobile-menu'}>
       <button type="button" className='gnbBtn' onClick={closeMenu}>
         <img src={gnbBtnClose} alt="전체메뉴 닫힘" />
@@ -113,21 +113,6 @@ const Header = () => {
         ))}
       </ul>
     </div>
-  
-    {/* {isOpen && (
-      <div className="mobile-menu">
-        <button type="button" className='gnbbtn' onClick={() => setIsOpen(false)}>
-          <img src={gnbBtnClose} alt="전체메뉴 닫힘" />
-        </button>
-        <ul>
-          {gnbData.map((menu) => (
-            <li key={menu.label}>
-              <Link to={menu.to}>{menu.label}</Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )} */}
   </>
   )
 }

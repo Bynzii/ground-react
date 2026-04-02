@@ -1,9 +1,9 @@
 
 import { Link } from 'react-router-dom'
+import '../../assets/css/Footer.css'
 
 //footer-imgs
-import footerLogo from '../../assets/img/flogo.png'
-import footerBack from '../../assets/img/footerBack.png'
+import footerLogo from '../../assets/img/flogo.svg'
 
 //footer-link
 const footerLinks = [
@@ -42,17 +42,14 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-background">
-        <img src={footerBack} alt="푸터 배경이미지" />
-      </div>
-
       <ul className='footer-links'>
-        {footerLinks.map((item) => {
+        {footerLinks.map((item) => (
           <li key={item.label}>
             <Link to={item.to}>{item.label}</Link>
           </li>
-        })}
+        ))}
       </ul>
+
     </footer>
   )
 }
