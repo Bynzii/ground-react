@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Popup from "./common/Popup";
 // import '../assets/css/HeroRight.css'
 
 //vid
@@ -10,6 +12,7 @@ import main8 from "../assets/img/main8.png";
 import main9 from "../assets/img/main9.png";
 import main10 from "../assets/img/main10.png";
 import main11 from "../assets/img/main11.png";
+
 
 const mainPlant = {
   img: main6, name: '그리니', sort: '클로로피텀', birth: '2024.06.06',
@@ -31,6 +34,22 @@ const addPlant = [
 ]
 
 const HeroRight = () => {
+
+  //Popup
+  const [layerOpen, setLayerOpen] = useState(false);
+
+  const handleOpen = () => {
+    setLayerOpen(true);
+    document.body.classList.add('noScroll');  
+  };
+
+  const handleClose = () => {
+    setLayerOpen(false);
+    document.body.classList.remove('noScroll');  
+  };
+
+
+
   return (
     <div className="hero-wrap right">
       <div className="hero-vid">
@@ -60,10 +79,10 @@ const HeroRight = () => {
           </div>  
 
           {/* right */}
-          <div className="fxCol">
-            <div className="plantStatus">
+          <div className="fxColCenter">
+            <div className="plantStatus  ">
               {mainPlant.status.map((item) => (
-              <div key={item.id} className="fxcol">
+              <div key={item.label} className="fxcol">
                   <span>{item.unit}</span>
                   <span className={item.color}>{item.value}</span>
                   <span>{item.label}</span>
@@ -73,7 +92,7 @@ const HeroRight = () => {
 
             <div className="subPlant">
               {mainPlant.sub.map((item) => (
-                <div className="fxcol" key={item.id}>
+                <div className="fxColCenter" key={item.id}>
                   <img src={item.img} alt="/" />
                   <span>{item.name}</span>
                 </div>
@@ -85,17 +104,37 @@ const HeroRight = () => {
         {/* btm 추가 식물 */}
         <div className="hero-con">
           {addPlant.map((item) => (
-            <div className="fxCol" key={item.id}>
+            <div className="fxColCenter" key={item.id}>
               <img src={item.img} alt="추가된 나의 식물" />
               <span>{item.name}</span>
             </div>
           ))}
         </div>
-        <button type="button"></button>
+        <button type="button" className="btn Add" onClick={handleOpen}>+ add</button>
       </div>
 
+      {/* layer Popup */}
+      {layerOpen && (
+        <Popup confirmTxt="등록"  onClose={handleClose}>
+          {/* 이미지 업로드 */}
+          <div className="img-upload">
+            <label htmlFor="plantImg">
+              <div className="defalutImg">
+                <span>+ 사진 추가</span>
+              </div>
+            </label>
+            <input type="file" />
+          </div>
 
+          <div className="it-wrap">
+            <input type="text" placeholder="이름" />
+            <input type="text" placeholder="종류" />
+            <input type="text" placeholder="생일" />
+          </div>
+        </Popup>
+      )}
     </div>
+
   )
 }
 export default HeroRight

@@ -52,6 +52,13 @@ body.noScroll {overflow-y: hidden; touch-action: none;}
 }
 
 /*===== flex-utility =====*/
+.fxCenter {display: flex; align-items: center; justify-content: center;}
+.fxAround {display: flex; align-items: center; justify-content: space-around;}
+.fxBtween {display: flex; align-items: center; justify-content: space-between;}
+.fxEvenly {display: flex; align-items: center; justify-content: space-evenly;}
+
+.fxCol {display: flex; flex-direction: column; align-items: center;}
+.fxColCenter {display: flex; flex-direction: column; align-items: center; justify-content: center;}
 
 
 /*===== layOut =====*/
