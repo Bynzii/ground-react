@@ -1,7 +1,5 @@
 
 import '../../assets/css/base.css'
-import '../../assets/css/Section.css'
-
 
 const Section = ({inner=true, secTitle, children}) => {
   return (

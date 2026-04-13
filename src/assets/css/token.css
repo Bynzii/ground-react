@@ -6,8 +6,10 @@
   --WT: #fff;
   --primary: #00887B;
   --secondary-red: #FD6955;
+  --secondary-red2: #ff3c22;
   --secondary-ivory: #F3F0DF;
   --text: #242426;
+  --text5: #7c7c7e;
   
   --bgimg:url(../img/paper_background.jpg);
   --bggradi:linear-gradient(180deg, rgba(0, 136, 122, 0.2) 0%, rgba(243, 240, 223, .4) 50%, rgba(253, 105, 85, .4) 100%),url(../img/paper_background.jpg);

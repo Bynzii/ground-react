@@ -1,0 +1,42 @@
+/* ------------------------------------------------------------------------- */
+/* Subscription
+/* ------------------------------------------------------------------------- */
+.tcon-left {
+  display: grid; grid-template-columns: repeat(2,1fr); 
+  gap: 4rem;
+  /* display: flex; align-items: center; flex-wrap: wrap; */
+  .items {
+    img {margin: auto;}
+
+    &:hover .TT {color: var(--primary);}
+    &:hover .price {color: var(--secondary-red2);}
+
+    .item-info {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      margin-top: 1rem; padding: 0 10%;
+
+      .price {font-size: 1.8rem; font-weight: 600;}
+      .TT, .price {transition: color 0.3s ease;}
+    }
+  }
+}
+
+.tcon-right {
+  .fxCenter {gap: 4rem;
+    
+    .small-list {display: flex; flex-direction: column; gap: 2rem;
+      .smBtn {display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+        &.active .TT {color: var(--primary); transition: color 0.3s ease;}
+      }
+    }
+  }
+
+  .year-info {
+    display: flex; align-items: center; justify-content: space-between; gap: 4rem;
+    font-size: 2rem;
+    margin-top: 4rem;
+
+    .price-orig {font-size: 1.6rem; text-decoration: line-through; color: var(--text5); margin-right: 2rem;}
+    .price-sale {font-size: 2.4rem; font-weight: 600; color: var(--secondary-red2);}
+  }
+}

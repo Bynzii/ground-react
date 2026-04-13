@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Section from "../components/common/Section";
 import Tabs from "../components/common/Tabs";
-// import '../../assets/css/Subscription.css'
+import '../assets/css/Subscription.css';
 
 // 이미지
 import a_img1 from '../assets/img/sec1_a1.png'
@@ -14,6 +14,10 @@ import a_img6 from '../assets/img/sec1_a6.png'
 import a_img7 from '../assets/img/sec1_a7.png'
 import a_img8 from '../assets/img/sec1_a8.png'
 import a_img9 from '../assets/img/sec1_a9.png'
+import a_img10 from '../assets/img/sec1_a52.png'
+import a_img11 from '../assets/img/sec1_a53.png'
+import a_img12 from '../assets/img/sec1_a54.png'
+import a_img13 from '../assets/img/sec1_a55.png'
 
 import b_img1 from '../assets/img/sec1_b1.png'
 import b_img2 from '../assets/img/sec1_b2.png'
@@ -24,6 +28,10 @@ import b_img6 from '../assets/img/sec1_b6.png'
 import b_img7 from '../assets/img/sec1_b7.png'
 import b_img8 from '../assets/img/sec1_b8.png'
 import b_img9 from '../assets/img/sec1_b9.png'
+import b_img10 from '../assets/img/sec1_b52.png'
+import b_img11 from '../assets/img/sec1_b53.png'
+import b_img12 from '../assets/img/sec1_b54.png'
+import b_img13 from '../assets/img/sec1_b55.png'
 
 import c_img1 from '../assets/img/sec1_c1.png'
 import c_img2 from '../assets/img/sec1_c2.png'
@@ -34,6 +42,11 @@ import c_img6 from '../assets/img/sec1_c6.png'
 import c_img7 from '../assets/img/sec1_c7.png'
 import c_img8 from '../assets/img/sec1_c8.png'
 import c_img9 from '../assets/img/sec1_c9.png'
+import c_img10 from '../assets/img/sec1_c52.png'
+import c_img11 from '../assets/img/sec1_c53.png'
+import c_img12 from '../assets/img/sec1_c54.png'
+import c_img13 from '../assets/img/sec1_c55.png'
+
 
 
 // tab 데이터
@@ -53,7 +66,14 @@ const tabContents = {
       {id: 3, img: a_img3, name:'mint', price: '₩22,000'},
       {id: 4, img: a_img4, name:'purple', price: '₩22,000'},
     ],
-    bigImg : a_img5,
+    bigImgs : [
+      {id: 1, img:a_img5},
+      {id: 2, img:a_img10},
+      {id: 3, img:a_img11},
+      {id: 4, img:a_img12},
+      {id: 5, img:a_img13},
+    ],
+
     clickImgs : [
       {id: 1, img: a_img6, name: 'pink'},
       {id: 2, img: a_img7, name: 'blue'},
@@ -70,7 +90,14 @@ const tabContents = {
       {id: 3, img: b_img3, name:'palson', price: '₩22,000'},
       {id: 4, img: b_img4, name:'cac2', price: '₩22,000'},
     ],
-    bigImg : b_img5,
+    bigImgs : [
+      {id: 1, img:b_img5},
+      {id: 2, img:b_img10},
+      {id: 3, img:b_img11},
+      {id: 4, img:b_img12},
+      {id: 5, img:b_img13},
+    ],
+
     clickImgs : [
       {id: 1, img: b_img6, name: 'cac'},
       {id: 2, img: b_img7, name: 'monte'},
@@ -87,7 +114,13 @@ const tabContents = {
       {id: 3, img: c_img3, name:'stone', price: '₩22,000'},
       {id: 4, img: c_img4, name:'palm', price: '₩22,000'},
     ],
-    bigImg : c_img5,
+    bigImgs : [
+      {id: 1, img:c_img5},
+      {id: 2, img:c_img10},
+      {id: 3, img:c_img11},
+      {id: 4, img:c_img12},
+      {id: 5, img:c_img13},
+    ],
     clickImgs : [
       {id: 1, img: c_img6, name: 'tera'},
       {id: 2, img: c_img7, name: 'sol'},
@@ -101,8 +134,13 @@ const tabContents = {
 
 const Subscription = () => {
   const [activeTab, setActiveTab] = useState(1);
-  const tabContent = tabContents[activeTab]
+  const [activeImg, setActiveImg] = useState(null);  
+  const tabContent = tabContents[activeTab];
 
+  const handleTabChange = (id) => {
+    setActiveTab(id)
+    setActiveImg(null)  // 탭 바뀌면 초기화
+  }
 
   return (
     <Section secTitle='subscription' > 
@@ -120,13 +158,13 @@ const Subscription = () => {
       <Tabs
         tabs={tabData}
         activeTab={activeTab}
-        onTabChange={setActiveTab}
+        onTabChange={handleTabChange}
       />
 
       {/* tab-contents */}
       <div className="tab-con">
-        <div className="con-inner">
-          <div className="con-left">
+        <div className="tcon-inner">
+          <div className="tcon-left">
             {tabContent.items.map((item) => (
               <div className="items" key={item.id}>
                 <img src={item.img} alt={item.name} />
@@ -138,7 +176,35 @@ const Subscription = () => {
             ))}
           </div>
           
-          <div className="con-right"></div>
+          <div className="tcon-right">
+            <div className="fxCenter">
+              <div className="bigImg">
+                <img 
+                  src={activeImg === null ? tabContent.bigImgs[0].img : tabContent.bigImgs[activeImg + 1].img} 
+                  alt="대표이미지" 
+                  />
+              </div>
+              <div className="small-list">
+                {tabContent.clickImgs.map((item, index) => (
+                  <div 
+                  className={`smBtn ${activeImg === index ? 'active' : ''}`}
+                  key={item.id}
+                  onClick={() => setActiveImg(index)}
+                  >
+                    <img src={item.img} alt={item.name} />
+                    <span className="TT">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="year-info">
+              <p className="TT">1year</p>
+              <div className="price-wrap">
+                <span className="price-orig">₩264,000</span>
+                <span className="price-sale">₩200,000</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Section>
