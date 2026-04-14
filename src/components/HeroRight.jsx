@@ -57,8 +57,8 @@ const HeroRight = () => {
       </div>
 
       <div className="hero-container">
-        <div className="main-tit">
-          <h3>my ground</h3>
+        <div className="main-head">
+          <h3 className="main-tit">my ground</h3>
         </div>
 
         <p className="desc">

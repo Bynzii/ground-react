@@ -1,0 +1,43 @@
+/* ------------------------------------------------------------------------- */
+/* Hero
+/* ------------------------------------------------------------------------- */
+.hero-tabs {
+  width: 100%; height: 5rem;
+  margin: 0 auto;
+  display: grid; grid-template-columns: repeat(2,1fr);
+  box-shadow: var(--boxshadow);
+  
+  button {
+    font-family: 'TT'; font-size: 1.6rem; font-weight: 600;
+    transition: background-color .3s ease, color 0.3s ease;
+
+    &.active, &:hover {color: var(--primary); font-weight: 600; background-color: var(--WT); box-shadow: var(--boxshadow);}
+    
+    + button {border-left: 1px solid var(--BK);}
+  }
+}
+
+/*===== hero =====*/
+#hero-All {height: 100%; display: flex; align-items: flex-start;
+
+  .hero-wrap {width: 50%; height: 100%; overflow-x: scroll;;
+  &.right {background: var(--bggradi-WT); border-left: 1px solid var(--BK);}
+
+    .hero-container {
+      display: flex; flex-direction: column; gap: 4rem;
+      padding: 0 5%;
+      
+      .main-head {
+        width: fit-content; height: 8rem;
+        margin: 5rem auto; padding: 0 10%;
+        display: flex; align-items: center; justify-content: center;
+        border-top: 2px solid var(--primary); border-bottom: 2px solid var(--primary);
+        color:  var(--text);
+        
+        .main-tit {font-family: 'TT'; font-size: 2.4rem; font-weight: 600;}
+      }
+      
+      .mainLogo {margin: auto; max-width: 20rem;}
+    }
+  }
+}

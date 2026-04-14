@@ -22,7 +22,7 @@
 }
 
 .tcon-right {
-  .fxCenter {gap: 4rem;
+  .fxCenter { gap: 4rem;
     
     .small-list {display: flex; flex-direction: column; gap: 2rem;
       .smBtn {display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
@@ -32,7 +32,7 @@
   }
 
   .year-info {
-    display: flex; align-items: center; justify-content: space-between; gap: 4rem;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 4rem;
     font-size: 2rem;
     margin-top: 4rem;
 

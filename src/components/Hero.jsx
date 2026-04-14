@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+// import '../assets/css/base.css'
 import '../assets/css/Hero.css'
 
 import HeroLeft from './HeroLeft'
@@ -10,18 +11,18 @@ const Hero = () => {
 
   return (
     <>
-      
-
       <main>
         {/* 탭 */}
-        <div className='hero-tabBar'>
+        <div className='hero-tabs'>
           <button type="button" onClick={() => setActiveTab('left')}>ground</button>
           <button type="button" onClick={() => setActiveTab('right')}>my 'ground'</button>
         </div>
         
         {/* 패널 */}
-        <HeroLeft />
-        <HeroRight />
+        <div id="hero-All">
+          <HeroLeft />
+          <HeroRight />
+        </div>
       </main>
     </>
   )
