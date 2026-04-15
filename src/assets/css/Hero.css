@@ -19,25 +19,68 @@
 
 /*===== hero =====*/
 #hero-All {height: 100%; display: flex; align-items: flex-start;
-
-  .hero-wrap {width: 50%; height: 100%; overflow-x: scroll;;
-  &.right {background: var(--bggradi-WT); border-left: 1px solid var(--BK);}
+  .hero-wrap {
+    width: 50%; height: calc(100% - 5rem); 
+    overflow-y: scroll; overflow-x: hidden;
+    color: var(--text3);
 
     .hero-container {
       display: flex; flex-direction: column; gap: 4rem;
-      padding: 0 5%;
+      padding: 0 5% 5% 5%;
       
       .main-head {
         width: fit-content; height: 8rem;
         margin: 5rem auto; padding: 0 10%;
         display: flex; align-items: center; justify-content: center;
         border-top: 2px solid var(--primary); border-bottom: 2px solid var(--primary);
-        color:  var(--text);
         
-        .main-tit {font-family: 'TT'; font-size: 2.4rem; font-weight: 600;}
+        .main-tit {font-family: 'TT'; font-size: 2.4rem; font-weight: 600; color:  var(--text);}
       }
       
       .mainLogo {margin: auto; max-width: 20rem;}
+      .desc {line-height: 1.6;}
+      .hero-needs {display: flex; flex-direction: column; gap: 4rem;
+        .sub-tit {text-align: center; font-size: 2.4rem; font-weight: 600;}
+
+        .needs {display: flex; align-items: center; gap: 4rem;
+          img {min-width: 18rem;}
+          
+          .needs-list{display: flex; flex-direction: column; gap: 1.6rem;
+            li {display: flex; align-items: center; gap: 1rem; white-space: nowrap;
+              &::before {content: '';
+                display: inline-flex;
+                width: 4px; height: 4px; 
+                background-color: var(--text3); border-radius: 50%;
+              }
+            }
+          }
+        }
+
+        .circleImg {
+          width: 100%; 
+          display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+          
+          img {min-width: 10rem;}
+        }
+      }
+
+      .btn.Add {margin-top: 2.4rem;}
+    }
+
+    /* right */
+    &.right {background: var(--bggradi-WT); border-left: 1px solid var(--BK);
+      .hero-con {width: 100%; display: flex; align-items: flex-end; justify-content: space-around; gap: 4rem;
+      
+        .plantStatus {width: 100%; display: flex; align-items: center; justify-content: space-around;
+          span {font-family: 'TT'; font-weight: 500; font-size: 1.8rem;}
+          span:nth-child(2) {font-size: 4.8rem; font-weight: 700; line-height: 1.5;}
+          
+          .green {color: var(--primary);}
+          .gray {color: var(--text3);}
+          .red {color: var(--secondary-red);}
+        }
+        .subPlant {display: flex; align-items: flex-end; gap: 4rem;}
+      }
     }
   }
 }

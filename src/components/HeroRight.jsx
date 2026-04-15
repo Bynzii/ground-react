@@ -17,9 +17,9 @@ import main11 from "../assets/img/main11.png";
 const mainPlant = {
   img: main6, name: '그리니', sort: '클로로피텀', birth: '2024.06.06',
   status: [
-    { unit: '%', value: '10', label: '물', color: 'primary' },
-    { unit: '%', value: '78', label: '습도', color: 'text' },
-    { unit: '℃', value: '24', label: '온도', color: 'secondary-red' },
+    { unit: '%', value: '10', label: '물', color: 'green' },
+    { unit: '%', value: '78', label: '습도', color: 'gray' },
+    { unit: '℃', value: '24', label: '온도', color: 'red' },
   ],
   sub: [
     { id: 1, img: main7, name: '그루니' },
@@ -79,13 +79,13 @@ const HeroRight = () => {
           </div>  
 
           {/* right */}
-          <div className="fxColCenter">
-            <div className="plantStatus  ">
+          <div className="fxColCenter g4">
+            <div className="plantStatus">
               {mainPlant.status.map((item) => (
-              <div key={item.label} className="fxcol">
-                  <span>{item.unit}</span>
-                  <span className={item.color}>{item.value}</span>
-                  <span>{item.label}</span>
+              <div key={item.label} className={`fxColCenter ${item.color}`}>
+                <span className="simbol">{item.unit}</span>
+                <span className={item.color}>{item.value}</span>
+                <span className="label">{item.label}</span>
               </div>
                 ))}
             </div>
@@ -110,12 +110,12 @@ const HeroRight = () => {
             </div>
           ))}
         </div>
-        <button type="button" className="btn Add" onClick={handleOpen}>+ add</button>
+        <button type="button" className="btn Add" onClick={handleOpen}>Add</button>
       </div>
 
       {/* layer Popup */}
       {layerOpen && (
-        <Popup confirmTxt="등록"  onClose={handleClose}>
+        <Popup className="smLong" title="식물 등록 하기" confirmTxt="등록" onClose={handleClose}>
           {/* 이미지 업로드 */}
           <div className="img-upload">
             <label htmlFor="plantImg">

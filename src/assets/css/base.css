@@ -61,6 +61,8 @@ body.noScroll {overflow-y: hidden; touch-action: none;}
 .fxCol {display: flex; flex-direction: column; align-items: center;}
 .fxColCenter {display: flex; flex-direction: column; align-items: center; justify-content: center;}
 
+.g4 {gap: 4rem;}
+
 
 /*===== layOut =====*/
 main {
@@ -74,6 +76,42 @@ main {
 /* ------------------------------------------------------------------------- */
 /* form > input, textarea, select, button
 /* ------------------------------------------------------------------------- */
+input, textarea, select, button {font-family: 'Pretendard'; font-size: 1.6rem; line-height: 1.5;}
+
+/* button */
+.btn-wrap {width: 100%; display: flex; align-items: center; justify-content: center; gap: 2rem;}
+.btn {
+  min-width: 12rem; height: 4rem; 
+  background-color: var(--primary); color: var(--WT); 
+  border: 1px solid var(--primary); border-radius: 1rem;
+  font-size: 1.4rem; font-weight: 600;
+  box-shadow: var(--press-shadow);
+  transition: .15s ease;
+
+  &:hover {transform: translateY(2px); box-shadow: var(--press-hover-shadow);}
+}
+.btn.border {border: 1px solid var(--primary); background-color: var(--WT); color: var(--primary);}
+
+
+.btn.Add {
+  width: 30%; height: 5rem; 
+  margin: auto;
+  font-size: 1.8rem; font-weight: 500;
+  color: var(--primary); background: var(--glass-bg);
+  backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
+  border: var(--glass-border); border-radius: 1rem;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    background: var(--glass-hover-bg); color: var(--WT);
+    border: var(--glass-hover-borde);
+    box-shadow: var(--glass-hover-shadow);
+      
+  }      
+}
+
 
 
 
@@ -139,5 +177,41 @@ ul.tabs {
 
 .tab-con{
   .tcon-inner {display: grid; grid-template-columns: repeat(2, 1fr); gap: 8rem;
+  }
+}
+
+
+
+/* ------------------------------------------------------------------------- */
+/* AddFile
+/* ------------------------------------------------------------------------- */
+
+
+
+/* ------------------------------------------------------------------------- */
+/* Popup
+/* ------------------------------------------------------------------------- */
+.layer {
+  width: 100%; height: 100dvh;
+  position: absolute; inset: 0; z-index: 1000;
+
+  .layer-dimmed {width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);}
+
+  .layer-wrap {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    background-color: var(--WT); border-radius: 2rem;
+    padding: 2rem;
+
+    /* size */
+    &.smLong {width: 30rem; height: 60rem;}
+
+    .layer-head {height: fit-content; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      .layer-tit {font-weight: 600;}
+      .layer-close {
+        width: 2rem; height: 2rem;
+        background-image: url(../img/xbtn.png); background-repeat: no-repeat;
+        background-size: contain; 
+      }
+    }
   }
 }

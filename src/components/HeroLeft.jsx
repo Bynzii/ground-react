@@ -37,7 +37,7 @@ const HeroLeft = () => {
 
         <div className="hero-needs">
           <h4 className="sub-tit">정기구독, 이런 분들에게 필요해요</h4>
-          <div className="fxBtween needs">
+          <div className="needs">
             <img src={main2} alt="꽃 이미지" />
             <ul className="needs-list">
               <li className="disc">반려 식물을 처음 키우시는 분</li>
@@ -47,11 +47,11 @@ const HeroLeft = () => {
               <li className="disc">구독 서비스로 구입비용을 절감하고 싶으신 분</li>
             </ul>
           </div>
-        </div>
-        <div className="fxBtween">
-          <img src={main3} alt="1. 1년에 10회" />
-          <img src={main4} alt="2. 계절 식물" />
-          <img src={main5} alt="3. 관리 및 설명서" />
+          <div className="circleImg">
+            <img src={main3} alt="1. 1년에 10회" />
+            <img src={main4} alt="2. 계절 식물" />
+            <img src={main5} alt="3. 관리 및 설명서" />
+          </div>
         </div>
       </div>
     </div> 
