@@ -81,6 +81,9 @@
         }
         .subPlant {display: flex; align-items: flex-end; gap: 4rem;}
       }
+      .addPlant {
+        .fxColCenter {flex: 1 1 calc(25% - 2rem); min-width: 8rem; flex-wrap: wrap;}
+      }
     }
   }
 }

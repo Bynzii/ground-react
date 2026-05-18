@@ -11,7 +11,11 @@
   --text: #242426;
   --text3: #333;
   --text5: #7c7c7e;
-  
+  --light-gray: #ECECEC; 
+  --light-gray-hover: #E3E3E3 ;
+  --it-border: #727979;
+
+
   --header-h: 10rem;
   --bgimg: url(../img/paper_background.jpg);
   --bggradi: linear-gradient(180deg, rgba(0, 136, 122, 0.2) 0%, rgba(243, 240, 223, .4) 50%, rgba(253, 105, 85, .4) 100%),url(../img/paper_background.jpg);

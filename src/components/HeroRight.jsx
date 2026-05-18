@@ -35,8 +35,14 @@ const addPlant = [
 
 const HeroRight = () => {
 
-  //Popup
+  // state
   const [layerOpen, setLayerOpen] = useState(false);
+  const [previewImg, setPreviewImg] = useState(null);
+  const [newPlant, setNewPlant] = useState({name:'', sort:'', birth:'', img: null});
+  const [plants, setPlants] = useState(() => {
+    const saved = localStorage.getItem('plants')
+    return saved ? JSON.parse(saved) : addPlant
+  });
 
   const handleOpen = () => {
     setLayerOpen(true);
@@ -46,7 +52,35 @@ const HeroRight = () => {
   const handleClose = () => {
     setLayerOpen(false);
     document.body.classList.remove('noScroll');  
+    setPreviewImg(null)
   };
+
+
+  // 식물사진 추가
+  const handleImgChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setPreviewImg(reader.result)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  // 식물 등록
+  const handleAdd = () => {
+    const newPlants = [...plants, {
+      name: newPlant.name,
+      img: previewImg,
+      id: plants.length + 1,
+    }]
+    setPlants(newPlants)
+    localStorage.setItem('plants', JSON.stringify(newPlants))
+    setNewPlant({name:'', sort:'', birth:'', img: null})
+    setPreviewImg(null)
+    handleClose()
+  }
 
 
 
@@ -102,8 +136,8 @@ const HeroRight = () => {
         </div>
 
         {/* btm 추가 식물 */}
-        <div className="hero-con">
-          {addPlant.map((item) => (
+        <div className="hero-con addPlant">
+          {plants.map((item) => (
             <div className="fxColCenter" key={item.id}>
               <img src={item.img} alt="추가된 나의 식물" />
               <span>{item.name}</span>
@@ -115,21 +149,47 @@ const HeroRight = () => {
 
       {/* layer Popup */}
       {layerOpen && (
-        <Popup className="smLong" title="식물 등록 하기" confirmTxt="등록" onClose={handleClose}>
+        <Popup className="smLong" title="식물 등록 하기" confirmTxt="등록" onClose={handleClose} onConfirm={handleAdd}>
           {/* 이미지 업로드 */}
           <div className="img-upload">
             <label htmlFor="plantImg">
               <div className="defalutImg">
-                <span>+ 사진 추가</span>
+                {previewImg 
+                  ? <img src={previewImg} alt="미리보기" /> 
+                  : <span>+ 사진 추가</span>
+                }
               </div>
             </label>
-            <input type="file" />
+            <input 
+              type="file" 
+              id="plantImg" 
+              className="dpnone"
+              onChange={handleImgChange}
+            />
           </div>
 
-          <div className="it-wrap">
-            <input type="text" placeholder="이름" />
-            <input type="text" placeholder="종류" />
-            <input type="text" placeholder="생일" />
+          <div className="plantInfo-wrap">
+            <div className="it-wrap">
+              <label htmlFor="plantName">이름</label>
+              <input 
+                type="text" id="plantName" className="it" placeholder="이름을 입력하세요" 
+                onChange={(e) => setNewPlant({...newPlant, name: e.target.value})}
+              />
+            </div>
+            <div className="it-wrap">
+              <label htmlFor="plantSort">종류</label>
+              <input 
+                type="text" id="plantSort" className="it" placeholder="종류를 입력하세요" 
+                onChange={(e) => setNewPlant({...newPlant, name: e.target.value})}
+              />
+            </div>
+            <div className="it-wrap">
+              <label htmlFor="plantBirth">생일</label>
+              <input 
+                type="text" id="plantBirth" className="it" placeholder="생일을 입력하세요" 
+                onChange={(e) => setNewPlant({...newPlant, name: e.target.value})}
+              />
+            </div>
           </div>
         </Popup>
       )}

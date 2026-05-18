@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import '../../assets/css/base.css'
 // import '../../assets/css/Popup.css'
 
-const Popup = ({className, title, subTitle, onClose, children, cancelTxt = '취소', confirmTxt = '확인', singleTxt}) => {
+const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancelTxt = '취소', confirmTxt = '확인', singleTxt}) => {
 
   //Esc
   useEffect(() => {
@@ -39,7 +39,7 @@ const Popup = ({className, title, subTitle, onClose, children, cancelTxt = '취�
             // false > 버튼 2개
             <div className="btn-wrap">
               <button type="button" className='btn border' onClick={onClose}>{cancelTxt}</button>
-              <button type="button" className='btn' onClick={onClose}>{confirmTxt}</button>
+              <button type="button" className='btn' onClick={onConfirm}>{confirmTxt}</button>
             </div>
           }
         </div>
