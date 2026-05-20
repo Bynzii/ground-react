@@ -41,7 +41,11 @@ body.noScroll {overflow-y: hidden; touch-action: none;}
 
 
 /*===== utility =====*/
-.TT {font-family: 'TT'; font-weight: 600;}
+.TT {font-family: 'TT'; font-weight: 600;
+  &.primary {color: var(--primary);}
+  &.red {color: var(--secondary-red);}
+  &.ivory {color: var(--secondary-ivory);}
+}
 .soundOnly {
   width: 1px !important; height: 1px !important;
   padding: 0 !important; margin: -1px !important;
@@ -76,67 +80,6 @@ main {
 
 
 /* ------------------------------------------------------------------------- */
-/* form > input, textarea, select, button
-/* ------------------------------------------------------------------------- */
-input, textarea, select, button {font-family: 'Pretendard'; font-size: 1.6rem; line-height: 1.5;}
-
-/*===== input =====*/
-.it {
-  width: 100%; height: 4rem; 
-  border: 1px solid var(--it-border); border-radius: 0.8rem; padding-inline: 1rem;
-  transition: border 0.3s ease, outline 0.3s ease;
-  &::placeholder {font-size: 1.2rem;}
-  &:hover {border-color: var(--primary);}
-
-  &:active, &:focus, &:focus-visible {border-color: var(--primary); outline: 2px solid var(--light-gray); outline-offset: 0;}
-}
-
-.it-wrap {display: flex; align-items: center; gap: 1.6rem;
-  &.col {flex-direction: column;}
-}
-
-
-/*===== button =====*/
-.btn-wrap {width: 100%; display: flex; align-items: center; justify-content: center; gap: 2rem;}
-.btn {
-  min-width: 12rem; height: 4rem; 
-  background-color: var(--primary); color: var(--WT); 
-  border: 1px solid var(--primary); border-radius: 1rem;
-  font-size: 1.4rem; font-weight: 600;
-  box-shadow: var(--press-shadow);
-  transition: .15s ease;
-
-  &:hover {transform: translateY(2px); box-shadow: var(--press-hover-shadow);}
-}
-.btn.border {border: 1px solid var(--primary); background-color: var(--WT); color: var(--primary);}
-
-
-.btn.Add {
-  width: 20%; height: 5rem; 
-  margin: auto;
-  font-size: 1.8rem; font-weight: 500;
-  color: var(--primary); background: var(--glass-bg);
-  backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
-  border: var(--glass-border); border-radius: 1rem;
-  box-shadow: var(--glass-shadow);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    background: var(--glass-hover-bg); color: var(--WT);
-    border: var(--glass-hover-borde);
-    box-shadow: var(--glass-hover-shadow);
-      
-  }      
-}
-
-
-
-
-
-
-
-/* ------------------------------------------------------------------------- */
 /* Section
 /* ------------------------------------------------------------------------- */
 .sec {
@@ -148,7 +91,7 @@ input, textarea, select, button {font-family: 'Pretendard'; font-size: 1.6rem; l
     width: 100%; 
     max-width: calc(160rem + 10%); padding: 0 5%; 
     margin: auto;
-
+  }
     .sec-head {
       width: fit-content; height: 8rem;
       margin: 5rem auto; padding: 0 10%;
@@ -167,8 +110,67 @@ input, textarea, select, button {font-family: 'Pretendard'; font-size: 1.6rem; l
       .TT {font-family: 'TT'; font-weight: 600;}
       b.bold {display: block; margin-top: 2rem;}
     }
+}
+
+
+
+/* ------------------------------------------------------------------------- */
+/* form > input, textarea, select, button
+/* ------------------------------------------------------------------------- */
+input, textarea, select, button {font-family: 'Pretendard'; font-size: 1.6rem; line-height: 1.5;}
+
+/*===== input =====*/
+.it {
+  width: 100%; height: 4rem; 
+  border: 1px solid var(--it-border); border-radius: 0.8rem; padding-inline: 1rem;
+  transition: border 0.3s ease, outline 0.3s ease;
+  &::placeholder {font-size: 1.2rem;}
+  &:hover {border-color: var(--primary);}
+  &:active, &:focus, &:focus-visible {border-color: var(--primary); outline: 2px solid var(--light-gray); outline-offset: 0;}
+
+  /* 정렬 class */
+  &.tac{text-align: center;}
+  &.tar{text-align: right;}
+}
+
+.it-wrap {display: flex; align-items: center; gap: 1.6rem;
+  &.col {flex-direction: column;}
+}
+
+
+/*===== button =====*/
+.btn-wrap {width: 100%; display: flex; align-items: center; justify-content: center; gap: 2rem;}
+.btn {
+  min-width: 12rem; height: 4rem; 
+  background-color: var(--primary); color: var(--WT); 
+  border: 1px solid var(--primary); border-radius: 1rem;
+  font-size: 1.4rem; font-weight: 600;
+  box-shadow: var(--press-shadow);
+  transition: .15s ease;
+
+  &:hover {transform: translateY(2px); box-shadow: var(--press-hover-shadow);}
+
+  &.border {border: 1px solid var(--primary); background-color: var(--WT); color: var(--primary);}
+  &.Add {
+    width: 20%; height: 5rem; 
+    margin: auto;
+    font-size: 1.8rem; font-weight: 500;
+    color: var(--primary); background: var(--glass-bg);
+    backdrop-filter: var(--glass-filter); -webkit-backdrop-filter: var(--glass-filter);
+    border: var(--glass-border); border-radius: 1rem;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      background: var(--glass-hover-bg); color: var(--WT);
+      border: var(--glass-hover-borde);
+      box-shadow: var(--glass-hover-shadow);
+
+    }      
   }
 }
+
 
 
 /* ------------------------------------------------------------------------- */
@@ -201,9 +203,20 @@ ul.tabs {
 
 
 /* ------------------------------------------------------------------------- */
+/* video
+/* ------------------------------------------------------------------------- */
+.vid-wrap {position: relative; border-radius: 2rem; overflow: hidden;
+  .vid-overlay {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode: overlay;
+    .vid-txt {font-size: 2rem; font-weight: 500; color: var(--WT); letter-spacing: 1.6rem;}
+  }
+}
+
+
+
+
+/* ------------------------------------------------------------------------- */
 /* AddFile
 /* ------------------------------------------------------------------------- */
-
 
 
 /* ------------------------------------------------------------------------- */
@@ -228,7 +241,7 @@ ul.tabs {
       }
     }
 
-    /* size */
+    /* smLong */
     &.smLong {width: 30rem; height: 60rem; padding: 2rem;
 
       /* 이미지첨부 */
@@ -252,13 +265,18 @@ ul.tabs {
           }
         }
       }
-      
       .plantInfo-wrap {display: flex; flex-direction: column; gap: 1rem; margin-top: 2.4rem;}
-
-
-
-      
-      .btn-wrap {position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);}
     }
+    
+    /* xs */
+    &.xs {width: 30rem; height: 20rem;
+      .cart-wrap {
+        padding: 2rem; margin-top: 0.5rem;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+      }
+    }
+
+
+    .btn-wrap {position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);}
   }
 }

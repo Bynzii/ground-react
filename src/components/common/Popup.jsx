@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import '../../assets/css/base.css'
 // import '../../assets/css/Popup.css'
 
-const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancelTxt = '취소', confirmTxt = '확인', singleTxt}) => {
+const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancelTxt = '취소', confirmTxt = '확인', singleTxt, showClose = true}) => {
 
   //Esc
   useEffect(() => {
@@ -20,11 +20,13 @@ const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancel
     <div className="layer">
       <div className="layer-dimmed" onClick={onClose}></div>
         <div className={`layer-wrap ${className || ''}`} onClick={(e) => e.stopPropagation()}>
+          {(title || subTitle || showClose) && 
           <header className="layer-head">
             {title && <h3 className='layer-tit'>{title}</h3>}
             {subTitle && <p>{subTitle}</p>}
             <button type='button' className='layer-close' onClick={onClose}></button>
           </header>
+          }
 
           <div className="layer-con">
             {children}

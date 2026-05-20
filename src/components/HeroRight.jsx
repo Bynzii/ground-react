@@ -43,6 +43,8 @@ const HeroRight = () => {
     const saved = localStorage.getItem('plants')
     return saved ? JSON.parse(saved) : addPlant
   });
+  const [editId, setEditId] = useState(null);
+  const [editName, setEditName] = useState('');
 
   const handleOpen = () => {
     setLayerOpen(true);
@@ -82,6 +84,29 @@ const HeroRight = () => {
     handleClose()
   }
 
+  // 식물 삭제
+  const handleDelete = (id) => {
+    const newPlants = plants.filter((plant) => plant.id !== id)
+    setPlants(newPlants)
+    localStorage.setItem('plants', JSON.stringify(newPlants))
+  }
+
+  // 식물 수정
+  const handleEditStart = (item) => {
+    setEditId(item.id)
+    setEditName(item.name)
+  }
+
+  // 식물 수정 완료
+  const handleEditDone = () => {
+    const newPlants = plants.map((plant) => 
+      plant.id === editId ? {...plant, name: editName} : plnat
+    )
+    setPlants(newPlants)
+    localStorage.setItem('plants', JSON.stringify(newPlants))
+    setEditId(null) 
+    setEditName('')
+  }
 
 
   return (
@@ -140,7 +165,22 @@ const HeroRight = () => {
           {plants.map((item) => (
             <div className="fxColCenter" key={item.id}>
               <img src={item.img} alt="추가된 나의 식물" />
-              <span>{item.name}</span>
+              {editId === item.id
+                ? <input className="it tac"
+                    type="text"
+                    value={editName}
+                    onChange={(e) => setEditName(e.target.value)}
+                    onBlur={(e) => e.key === 'Enter' && handleEditDone()}
+                    autoFocus
+                  /> 
+                : <span onClick={() => handleEditStart(item)}>{item.name}</span>
+              }
+              <button 
+                type="button"
+                className="plant-del"
+                onClick={() => handleDelete(item.id)}
+              >
+              </button>
             </div>
           ))}
         </div>
@@ -180,14 +220,14 @@ const HeroRight = () => {
               <label htmlFor="plantSort">종류</label>
               <input 
                 type="text" id="plantSort" className="it" placeholder="종류를 입력하세요" 
-                onChange={(e) => setNewPlant({...newPlant, name: e.target.value})}
+                onChange={(e) => setNewPlant({...newPlant, sort: e.target.value})}
               />
             </div>
             <div className="it-wrap">
               <label htmlFor="plantBirth">생일</label>
               <input 
                 type="text" id="plantBirth" className="it" placeholder="생일을 입력하세요" 
-                onChange={(e) => setNewPlant({...newPlant, name: e.target.value})}
+                onChange={(e) => setNewPlant({...newPlant, birth: e.target.value})}
               />
             </div>
           </div>
