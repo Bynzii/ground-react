@@ -1,9 +1,9 @@
 
 import '../../assets/css/base.css'
 
-const Section = ({inner=true, secTitle, children}) => {
+const Section = ({inner=true, secTitle, children, className}) => {
   return (
-    <section className="sec">
+    <section className={`sec ${className || ''}`}>
       {inner ? (
       <div className="sec-inner">
         {secTitle && (
