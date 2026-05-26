@@ -13,6 +13,7 @@ import Drag from "../components/Drag"
 
 // vid 
 import plant2 from "../assets/vid/plant2.mp4"
+import Banner from "./Banner"
 
 const Home = () => {
   return (
@@ -30,7 +31,7 @@ const Home = () => {
       </Section>
       <Shop />
       <Drag />
-      
+      <Banner />
     </>
   )
 }

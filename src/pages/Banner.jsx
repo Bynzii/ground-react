@@ -1,7 +1,10 @@
 
+import { CalendarCheck2 } from "lucide-react";
 import Section from "../components/common/Section";
 import Popup from "../components/common/Popup";
+import usePopup from "../hooks/usePopup";
 import "../assets/css/Banner.css"
+
 
 const bannerData = [
   {id: 1, title: '회원 가입 시 50,000원 쿠폰팩', desc:'쿠폰함을 확인해 주세요'},
@@ -9,6 +12,8 @@ const bannerData = [
   {id: 3, title: '카카오 채널 추가 시 5,000원 쿠폰 지급'},
   {id: 4, title: '출석 체크 이벤트 진행중', hasBtn: true},
 ]
+
+
 
 const Banner = () => {
   const {isOpen, handleOpen, handleClose} = usePopup();
@@ -25,11 +30,21 @@ const Banner = () => {
         <div className="banner-txt">
           <p>카카오 채널 추가 시 <br/> 5,000원 쿠폰 지급</p>
         </div>
-        <div className="banner-txt">
+        <div className="banner-txt row" onClick={handleOpen}>
           <p>출석 체크 이벤트 진행중</p>
-          <button className="ico go" onClick={handleOpen}></button>
+          <button className="ico go">
+            <CalendarCheck2 size={28}/>
+          </button>
         </div>
       </div>
+
+      {isOpen && 
+        <Popup className="event-check" showClose singleTxt="이벤트 참여하기" onClose={handleClose}>
+          <div className="chk-wrap">
+
+          </div>
+        </Popup>
+      }
     </Section>
   )
 }
