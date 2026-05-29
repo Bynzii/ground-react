@@ -10,6 +10,7 @@ import Hero from "../components/Hero"
 import Subscription from "./Subscription"
 import Shop from "./Shop"
 import Drag from "../components/Drag"
+import OurSlide from "../components/OurSlide"
 
 // vid 
 import plant2 from "../assets/vid/plant2.mp4"
@@ -32,6 +33,7 @@ const Home = () => {
       <Shop />
       <Drag />
       <Banner />
+      <OurSlide />
     </>
   )
 }

@@ -1,10 +1,9 @@
 
 import { useEffect } from 'react'
-
+import { X } from "lucide-react";
 import '../../assets/css/base.css'
-// import '../../assets/css/Popup.css'
 
-const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancelTxt = '취소', confirmTxt = '확인', singleTxt, showClose = true}) => {
+const Popup = ({className, title, subTitle, noBtn = false, onClose, onConfirm, children, cancelTxt = '취소', confirmTxt = '확인', singleTxt, showClose = true}) => {
 
   //Esc
   useEffect(() => {
@@ -24,7 +23,9 @@ const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancel
           <header className="layer-head">
             {title && <h3 className='layer-tit'>{title}</h3>}
             {subTitle && <p>{subTitle}</p>}
-            <button type='button' className='layer-close' onClick={onClose}></button>
+            <button type='button' className='layer-close' onClick={onClose}>
+              <X size={20}/>
+            </button>
           </header>
           }
 
@@ -32,10 +33,11 @@ const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancel
             {children}
           </div>
 
-          {singleTxt ? 
+          {!noBtn && (
+            singleTxt ? 
             // true
             <div className="btn-wrap">
-              <button type="button" className='btn' onClick={onClose}>{singleTxt}</button>
+              <button type="button" className='btn' onClick={onConfirm || onClose}>{singleTxt}</button>
             </div>
             :
             // false > 버튼 2개
@@ -43,7 +45,7 @@ const Popup = ({className, title, subTitle, onClose, onConfirm, children, cancel
               <button type="button" className='btn border' onClick={onClose}>{cancelTxt}</button>
               <button type="button" className='btn' onClick={onConfirm}>{confirmTxt}</button>
             </div>
-          }
+          )}
         </div>
     </div>
   )

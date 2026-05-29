@@ -34,7 +34,7 @@
 
         .ico.go svg {transform: scale(1);}
       }
-      > p {font-size: 1.8rem; font-weight: 500;}
+      > p {font-size: 1.8rem; font-weight: 500; line-height: 1.5;}
       > span {font-size: 1.4rem; font-weight: 400;}
       > .ico.go svg {color: var(--WT); transform: scale(0.8); transition: transform 0.2s ease;}
 

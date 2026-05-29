@@ -227,18 +227,15 @@ ul.tabs {
   position: fixed; inset: 0; z-index: 1000;
 
   .layer-dimmed {width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);}
-
   .layer-wrap {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
     background-color: var(--WT); border-radius: 2rem;
 
-    .layer-head {height: fit-content; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    .layer-head {
+      height: fit-content; display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      position: relative; z-index: 10;
       .layer-tit {font-weight: 600;}
-      .layer-close {
-        width: 2rem; height: 2rem;
-        background-image: url(../img/xbtn.png); background-repeat: no-repeat;
-        background-size: contain; 
-      }
+      .layer-close {background: none; border: 0; padding: 0; color: var(--BK);}
     }
 
     /* smLong */
@@ -273,6 +270,101 @@ ul.tabs {
       .cart-wrap {
         padding: 2rem; margin-top: 0.5rem;
         display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+      }
+    }
+
+    /* 출석체크 팝업 */
+    &.event-check {
+      width: 50rem; height: 55rem; 
+      overflow: hidden;
+      padding: 2rem;
+      background-color: var(--dark-popup-bg);
+
+      .layer-close {color: var(--WT); margin-left: auto; transition: transform 0.2s ease;
+        svg {width: 3rem; height: 3rem;}
+        &:hover {transform: scale(1.2);}
+      }
+
+      .chk-wrap {
+        transition: transform 0.3s ease;
+        img {
+          width: 90%; margin: auto; 
+          opacity: 1; transition: opacity 0.15s ease;
+        }
+        .chk-calendar {opacity: 1;}
+
+        /* 버튼 클릭후 + up */
+        &.up {transform: translateY(-5%);
+          img {opacity: 0; position: relative; z-index: 0;}
+
+          .chk-calendar {transform: translateY(-100%);
+            .react-calendar {
+              width: 100%; overflow: hidden;
+              color: var(--WT); 
+              background: radial-gradient(
+                circle at top left,
+                rgba(255, 255, 255, 0.4) 0%,
+                rgba(255, 255, 255, 0) 100%
+              );
+              backdrop-filter: blur(4px);
+              border-radius: 2rem;
+              border: 1px solid rgba(255, 255, 255, 0.2);
+
+              /* 헤더 네비게이션 */
+              .react-calendar__navigation button {
+                color: var(--WT); transition: transform 0.2s ease;
+                span {font-family: 'TT'; font-size: 1.4rem; font-weight: 500;}
+
+                &:hover, &:enabled:hover, &:enabled:focus, &:active, &:focus, &:disabled {background-color: transparent;}
+              }
+              
+              /* 요일 */
+              .react-calendar__month-view__days {padding-bottom: 1rem;}
+              .react-calendar__month-view__days__day--neighboringMonth {opacity: 0.3;}
+
+              .react-calendar__month-view__weekdays__weekday {font-family: 'TT'; font-size: 1.6rem; font-weight: 600;}
+              .react-calendar__month-view__weekdays__weekday:nth-child(6){color: #3663F6;}
+              .react-calendar__month-view__weekdays__weekday:nth-child(7){color: #FF381D;}
+
+
+              /* 날짜 */
+              .react-calendar__tile {
+                font-family: 'TT'; font-size: 1.2rem; font-weight: 300; color: var(--WT);
+                border-radius: 16px 2px 16px 2px; background-color: transparent;
+              }
+              .react-calendar__tile:enabled:hover, 
+              .react-calendar__tile:enabled:focus {background-color: rgba(3, 198, 178, 0.235);}
+              .react-calendar__tile--active {
+                background: 0; border-radius: 0 !important;
+                border-bottom: 4px solid var(--primary);
+                transition: font-size 0.15s linear ,font-weight 0.15s ease;
+
+                &:hover, &:focus {background-color: transparent ; font-size: 1.3rem; font-weight: 600;}
+              }
+              .react-calendar__tile.attend,
+              .react-calendar__tile--active.attend {
+                border-radius: 16px 2px 16px 2px !important;
+                border: 0;
+                background-color: var(--primary);
+                &:hover {background-color: var(--primary);}
+              }
+            }
+          }
+        }
+
+      }
+
+      .btn-wrap{ padding: 0 2rem;
+        .btn {width: 100%;
+          &:hover {transform: translateY(0);}
+
+          &.glass {
+            background: rgba(0, 136, 123, 0.2); color: var(--WT);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+          }
+        }
       }
     }
 
