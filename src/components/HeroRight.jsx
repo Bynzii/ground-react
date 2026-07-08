@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Popup from "./common/Popup";
-// import '../assets/css/HeroRight.css'
 
 //vid
 import mainVid from "../assets/vid/plant.mp4"
@@ -100,7 +99,7 @@ const HeroRight = () => {
   // 식물 수정 완료
   const handleEditDone = () => {
     const newPlants = plants.map((plant) => 
-      plant.id === editId ? {...plant, name: editName} : plnat
+      plant.id === editId ? {...plant, name: editName} : plant
     )
     setPlants(newPlants)
     localStorage.setItem('plants', JSON.stringify(newPlants))

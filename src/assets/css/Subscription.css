@@ -1,42 +1,74 @@
 /* ------------------------------------------------------------------------- */
 /* Subscription
 /* ------------------------------------------------------------------------- */
+.tab-con .tab-inner {display: flex; align-items: flex-start; gap: 8rem; transition: 0.3s ease;}
 .tcon-left {
-  display: grid; grid-template-columns: repeat(2,1fr); 
+  display: grid; grid-template-columns: repeat(2,1fr); flex: 1;
   gap: 4rem;
-  /* display: flex; align-items: center; flex-wrap: wrap; */
-  .items {
-    img {margin: auto;}
-
-    &:hover .TT {color: var(--primary);}
-    &:hover .price {color: var(--secondary-red2);}
-
-    .item-info {
-      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
-      margin-top: 1rem; padding: 0 10%;
-
-      .price {font-size: 1.8rem; font-weight: 600;}
-      .TT, .price {transition: color 0.3s ease;}
-    }
-  }
 }
+.tcon-left .items img {margin: auto;}
+.tcon-left .items .item-info {
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  margin-top: 1rem; padding: 0 10%;
+}
+.tcon-left .items .item-info .TT,
+.tcon-left .items .item-info .price {transition: color 0.3s ease;} 
+.tcon-left .items .item-info .price {font-size: 1.8rem; font-weight: 600;}
+.tcon-left .items:hover img {filter: opacity(0.9); transition: filter 0.3s ease;}
+.tcon-left .items:hover .TT{color: var(--primary);}
+.tcon-left .items:hover .price{color: var(--secondary-red2);}
 
-.tcon-right {
-  .fxCenter { gap: 4rem;
-    
-    .small-list {display: flex; flex-direction: column; gap: 2rem;
-      .smBtn {display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
-        &.active .TT {color: var(--primary); transition: color 0.3s ease;}
-      }
-    }
-  }
+.tcon-right {flex: 1; container-type: inline-size; container-name: tcon-right;}
+.tcon-right .fxCenter { gap: 4rem; transition: felx-direction 0.3s ease;} 
+.tcon-right .bigImg {width: 100%;}
+.tcon-right .bigImg img {width: 100%; height: auto;}
+.tcon-right .small-list {display: flex; flex-direction: column; gap: 2rem;}
+.tcon-right .small-list .smBtn {
+  display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+  cursor: pointer;
 
-  .year-info {
-    display: flex; align-items: flex-end; justify-content: space-between; gap: 4rem;
-    font-size: 2rem;
-    margin-top: 4rem;
+  &:hover {opacity: 0.9; transition: opacity 0.3s ease;}
+  &.active .TT {color: var(--primary); transition: color 0.3s ease;}
+}
+.tcon-right .year-info {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 4rem;
+  font-size: 2rem;
+  margin-top: 4rem;
 
-    .price-orig {font-size: 1.6rem; text-decoration: line-through; color: var(--text5); margin-right: 2rem;}
-    .price-sale {font-size: 2.4rem; font-weight: 600; color: var(--secondary-red2);}
-  }
+  .price-orig {font-size: 1.6rem; text-decoration: line-through; color: var(--text5); margin-right: 2rem;}
+  .price-sale {font-size: 2.4rem; font-weight: 600; color: var(--secondary-red2);}
+} 
+  
+
+
+/* ------------------------------------------------------------------------- */
+/*  Responsive
+/* ------------------------------------------------------------------------- */
+@media  (max-width: 1200px) {
+  .sec .sec-desc {text-align: left;}
+  .tab-con .tcon-inner {gap: 4rem;}
+}
+@media  (max-width: 1024px) {
+  .tcon-left {gap: 2rem;}
+  .tcon-left .items .item-info {padding: 0;}
+  .tcon-left .items .item-info .price {font-size: 1.4rem;}
+  
+}
+@media (max-width:768px) {
+  .tab-con .tcon-inner {gap: 2rem;}
+  .tcon-right .bigImg img {width: 90%; margin: auto;}
+}
+@media (max-width:676px) {
+  .tab-con .tcon-inner {grid-template-columns: repeat(1, 1fr); gap: 8rem;}
+  .tcon-right {order: 1;} .tcon-left {order: 2;}
+  .sec .sec-con b.bold {font-size: 1.4rem;}
+} 
+
+@container tcon-right (max-width: 400px) {
+  .tcon-right .fxCenter {flex-direction: column; gap: 2rem;}
+  .tcon-right .bigImg img {width: 80%; margin: auto;}
+  .tcon-right .small-list {flex-direction: row; gap: 1.2rem;}
+  .tcon-right .year-info .price-orig  {font-size: 1.4rem;}
+  .tcon-right .year-info .price-sale {font-size: 1.8rem;}
+  
 }

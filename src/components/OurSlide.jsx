@@ -99,8 +99,13 @@ const OurSlide = () => {
         slidesPerView={4.5}
         spaceBetween={20}
         loop={true}
-        // autoplay={{delay: 3000, disableOnInteraction: false}}
         pagination={{ clickable: true }}
+        breakpoints={{
+          0: {slidesPerView: 2},
+          768: {slidesPerView: 3},
+          1024: {slidesPerView: 3.5},
+          1200: {slidesPerView: 4},
+        }}
       >
         {slideData.map((slide) => (
           <SwiperSlide key={slide.id}>

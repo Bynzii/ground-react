@@ -46,6 +46,11 @@ body.noScroll {overflow-y: hidden; touch-action: none;}
   &.red {color: var(--secondary-red);}
   &.ivory {color: var(--secondary-ivory);}
 }
+@media (max-width:1024px) {
+  .TT {font-size: 1.4rem;}
+}
+
+
 .soundOnly {
   width: 1px !important; height: 1px !important;
   padding: 0 !important; margin: -1px !important;
@@ -85,7 +90,8 @@ main {
 .sec {
   width: 100%; overflow: hidden;
   margin-top: 10rem;
-  position: relative;
+  position: relative; 
+  transition: margin-top 0.3s ease;
 
   .sec-inner {
     width: 100%; 
@@ -98,8 +104,9 @@ main {
       display: flex; align-items: center; justify-content: center;
       border-top: 2px solid var(--primary); border-bottom: 2px solid var(--primary);
       color:  var(--text);
+      transition: height 0.3s ease;
 
-      .sec-tit {font-family: 'TT'; font-size: 2.4rem; font-weight: 600;}
+      .sec-tit {font-family: 'TT'; font-size: 2.4rem; font-weight: 600; transition: font-size 0.3s ease;}
     }
     
     .sec-desc {
@@ -107,9 +114,21 @@ main {
       font-size: 1.6rem; line-height: 1.6;
       padding-bottom: 6rem;
 
-      .TT {font-family: 'TT'; font-weight: 600;}
       b.bold {display: block; margin-top: 2rem;}
     }
+}
+
+/*===== responsive =====*/
+@media (max-width:1024px) {
+  .sec {
+    .sec-head{ height: 6rem;
+      .sec-tit {font-size: 2rem;}
+    } 
+  }
+}
+@media (max-width:768px) {
+  .sec {margin-top: 6rem;
+  }
 }
 
 
@@ -176,10 +195,10 @@ input, textarea, select, button {font-family: 'Pretendard'; font-size: 1.6rem; l
 /* ------------------------------------------------------------------------- */
 /* Tabs + TabContet
 /* ------------------------------------------------------------------------- */
-ul.tabs {
+.tabs {
   margin-bottom: 5rem;
   display: flex; align-items: center; justify-content: center; gap: 2rem;
-  text-align: center;
+  text-align: center; container-type: inline-size; container-name: tabs;
 
   li { width: calc(100% / 3); cursor: pointer; position: relative;
     &::after {content: '';
@@ -189,7 +208,7 @@ ul.tabs {
       position: absolute; bottom: -1rem; left: 50%; transform: translateX(-50%);
       transition: .5s ease;
     }
-    &:hover::after {width: 40%;}
+    &:hover::after, &:active::after {width: 40%;}
     
     button {width: 100%; height: 100%; font-size: 2rem; font-weight: 500;}
   }
@@ -200,15 +219,49 @@ ul.tabs {
   }
 }
 
+/*===== responsive =====*/
+@container tabs (max-width: 768px) {
+  .tabs {
+    li{
+      button {font-size: 1.6rem;}
+      &:hover::after {width: 60%;}
+    }
+  }
+  .tab-con .tcon-inner {grid-template-columns: 1fr; gap: 4rem;}
+}
 
+@container tabs (max-width: 500px) {
+  .tabs {
+    li{
+      button {font-size: 1.4rem;}
+      &:hover::after {width: 90%;}
+    }
+  }
+}
 
 /* ------------------------------------------------------------------------- */
 /* video
 /* ------------------------------------------------------------------------- */
-.vid-wrap {position: relative; border-radius: 2rem; overflow: hidden;
-  .vid-overlay {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode: overlay;
-    .vid-txt {font-size: 2rem; font-weight: 500; color: var(--WT); letter-spacing: 1.6rem;}
+.vid-wrap { position: relative; border-radius: 2rem; overflow: hidden;
+  .vid-overlay { 
+    width: 100%; padding: 0 5%; 
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    mix-blend-mode: overlay; text-align: center;
+    container-type: inline-size; container-name: vid;
+
+    .vid-txt {
+      font-size: 2rem; font-weight: 500; line-height: 1.5; 
+      letter-spacing: 1.6rem; color: var(--WT);
+      transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+    }
   }
+}
+
+@container vid (max-width: 768px) {
+  .vid-wrap .vid-overlay .vid-txt {font-size: 1.6rem;}
+}
+@container vid (max-width: 575px) {
+  .vid-wrap .vid-overlay .vid-txt {font-size: 1.4rem; letter-spacing: 0.4rem;}
 }
 
 

@@ -2,7 +2,7 @@
 /* Drag
 /* ------------------------------------------------------------------------- */
 .secDrag {position: relative;
-  button {position: absolute; top: 40%; left: 50%; transform: translateX(-50%);
+  button {position: absolute; top: 40%; left: 50%; transform: translateX(-50%); transition: top 0.3s ease;
     .savedIco {transition: color 0.2s ease, trnasform 0.3s ease; transform: scale(0.9);
       &:hover {color: var(--primary); transform: scale(1);}
     }
@@ -12,6 +12,7 @@
     margin-top: 5rem;
     display: grid; grid-template-columns: repeat(3, 1fr); 
     align-items: center; justify-content: space-between; gap: 3rem;
+    transition: grid-template-columns 0.3s ease, gap 0.3s ease;
     
     .drag-deco {
       position: relative;
@@ -20,5 +21,33 @@
     
     }
     img {margin: auto;}
+  }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/*  Responsive 
+/* ------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .secDrag { 
+    .drag-wrap {gap: 2rem;
+      .drag-deco {height: 30rem; gap: 1rem;}
+    }
+    button {top: 50%;}
+  }
+}
+
+@media (max-width: 768px) {
+  .secDrag { 
+    .drag-wrap {  grid-template-columns: repeat(2, 1fr);
+      .drag-room {grid-column: 1 / -1; grid-row: 1 / 2; margin: auto;}
+    }
+    button {top: 35%;}
+  }
+}
+
+@media (max-width: 430px) {
+  .secDrag { 
+    button {top: 39%;}
   }
 }

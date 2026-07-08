@@ -8,11 +8,12 @@
   background-size: cover; background-position: center; background-attachment: fixed;
 
   .banner-wrap {
-    display: flex; align-items: center; justify-content: space-around; gap: 2rem;
+    display: flex; align-items: center; justify-content: space-around;
+    gap: 2rem; flex-wrap: wrap;
     color: var(--WT);
 
     .banner-txt {
-      width: calc(100% / 4); height: 12rem; padding: 3%;
+      width: calc((100% - 6rem) / 4); height: 12rem; padding: 3%;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem;
       border: var(--glass-border); border-radius: 2rem;
       background-color: var(--glass-bg); backdrop-filter: blur(3px);
@@ -39,6 +40,28 @@
       > .ico.go svg {color: var(--WT); transform: scale(0.8); transition: transform 0.2s ease;}
 
       &.row {flex-direction: row; justify-content: space-between;}
+    }
+  }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/*  Responsive
+/* ------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .sec.banner { padding: 3%;
+    .banner-wrap {gap: 1rem;
+      .banner-txt > p {font-size: 1.6rem;}
+    }
+  }
+}
+@media (max-width: 800px) {
+  .sec.banner {
+    .banner-wrap {
+      .banner-txt {width: calc( (100% - 2rem) / 2);
+        & > p {font-size: 1.4rem;}
+        & > span {font-size: 1.2rem;}
+      }
     }
   }
 }

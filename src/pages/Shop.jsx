@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 import Section from "../components/common/Section";
 import Popup from "../components/common/Popup";
@@ -37,11 +37,11 @@ const Shop = () => {
   
   const {isOpen, handleOpen, handleClose} = usePopup();
 
-  const navigate = useNavigate()
-  const handleCart = () => {
-    handleClose()
-    navigate('/Cart')
-  }
+  // const navigate = useNavigate()
+  // const handleCart = () => {
+  //   handleClose()
+  //   navigate('/Cart')
+  // }
   return (
     <Section secTitle='shop shop shop' inner={false}>
       <div className="product-wrap">
@@ -74,4 +74,4 @@ const Shop = () => {
     </Section>
   )
 }
-export default Shop
+export default Shop;
