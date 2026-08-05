@@ -46,16 +46,17 @@
         position: absolute; right: 1.6rem; top: 1.6rem; z-index: 10;
         width: 4rem; height: 4rem;
         border-radius: 50%; 
-        background-color: var(--light-gray); background-image: url(../img/ico_cart.svg); 
+        background-color: color-mix(in srgb, var(--light-gray) 70%, transparent);
+        background-image: url(../img/ico_cart.svg); 
         background-repeat: no-repeat; background-size: 2.8rem; background-position: center;
         box-shadow: var(--boxshadow); transform: scale(0.8);
-        opacity: 0; transition: opacity .3s ease, transform 0.3s ease;
+        opacity: 0; 
+        transition: opacity .3s ease, transform 0.3s ease;
       }
       
       &:hover .cart {opacity: 1; transform: scale(1);}
     }
     img {width: 100%;}
-    
   }
 
 
