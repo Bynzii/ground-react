@@ -9,9 +9,9 @@ import main3 from "../assets/img/main3.png";
 import main4 from "../assets/img/main4.png";
 import main5 from "../assets/img/main5.png";
 
-const HeroLeft = () => {
+const HeroLeft = ({ scrollRef }) => {
   return (
-    <div className="hero-wrap">
+    <div className="hero-wrap" ref={scrollRef} data-lenis-prevent>
       <div className="hero-banner">
         <img src={mainBanner} alt="메인배너 이미지" />
       </div>

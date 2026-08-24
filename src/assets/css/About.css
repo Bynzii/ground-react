@@ -1,0 +1,247 @@
+/* ------------------------------------------------------------------------- */
+/* mini hero (상단 배너)
+/* ------------------------------------------------------------------------- */
+.mini-hero {
+  width: 100%; overflow: hidden;
+
+  img {width: 100%; height: auto; display: block;}
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 공통 - 서브타이틀 / 대표 로고
+/* ------------------------------------------------------------------------- */
+.sec-con {
+  .sub-tit {
+    text-align: center; font-size: 2.4rem; font-weight: 600; line-height: 1.5;
+    margin-bottom: 4rem;
+    transition: font-size 0.3s ease, margin-bottom 0.3s ease;
+
+    &.tal {text-align: left;}
+  }
+
+  > img:first-child {display: block; max-width: 20rem; margin: 0 auto 3rem;}
+}
+
+.sec-desc {
+  padding-left: 10%; padding-right: 10%;
+  transition: padding-left 0.3s ease, padding-right 0.3s ease;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* 정기구독 필요 대상
+/* ------------------------------------------------------------------------- */
+.needs {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4rem;
+  margin-bottom: 4rem;
+  transition: gap 0.3s ease;
+
+  img {width: 20rem; max-width: 100%; transition: width 0.3s ease;}
+
+  .needs-list {
+    display: flex; flex-direction: column; gap: 1.6rem;
+    transition: margin-top 0.3s ease;
+
+    li {display: flex; align-items: center; gap: 1rem; font-size: 1.6rem; white-space: nowrap;
+      transition: font-size 0.3s ease;
+
+      &::before {content: '';
+        display: inline-flex; flex-shrink: 0;
+        width: 4px; height: 4px;
+        background-color: var(--text3); border-radius: 50%;
+      }
+    }
+  }
+}
+
+.circleImg {
+  display: flex; align-items: center; justify-content: center; gap: 4rem;
+
+  img {min-width: 6rem; max-width: 20rem; transition: max-width 0.3s ease, width 0.3s ease;}
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* BI keywords
+/* ------------------------------------------------------------------------- */
+.kword-wrap {
+  display: flex; align-items: flex-start; justify-content: space-around; gap: 3rem;
+  flex-wrap: wrap;
+  transition: gap 0.3s ease;
+}
+.kword {
+  --kword-icon: 20rem;
+  --kword-gap: 12rem;
+  width: fit-content;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  gap: var(--kword-gap);
+  transition: gap 0.3s ease;
+
+  img {width: var(--kword-icon); height: var(--kword-icon); transition: width 0.3s ease, height 0.3s ease;}
+
+  .WT {
+    width: max-content;
+    position: absolute; top: calc(var(--kword-icon) / 2); left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'TT'; font-size: 2rem; font-weight: 600; color: var(--WT); white-space: nowrap;
+    z-index: 1;
+    transition: top 0.3s ease, font-size 0.3s ease;
+  }
+
+  &::after {content: '';
+    display: block;
+    width: 1px; height: var(--kword-gap);
+    background-color: var(--BK);
+    position: absolute; top: var(--kword-icon); left: 50%; transform: translateX(-50%);
+    transition: top 0.3s ease, height 0.3s ease;
+  }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* signature + color
+/* ------------------------------------------------------------------------- */
+.sig-wrap {
+  width: 100%; max-width: 80rem;
+  margin: 0 auto 4rem;
+  transition: max-width 0.3s ease;
+
+  img {width: 100%; height: auto;}
+}
+
+.color-wrap {
+  width: 100%; max-width: 80rem;
+  margin: 0 auto;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem;
+  transition: max-width 0.3s ease;
+
+  .color-item {
+    --track: 12rem;
+    --track-gap: 2rem;
+    --circle: 12rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem var(--track-gap);
+    width: calc(var(--track) * 3 + var(--track-gap) * 2);
+    max-width: 100%;
+    text-align: left;
+    transition: width 0.3s ease;
+
+    /* 원(primary)만 있는 첫번째 아이템은 트랙 1개, 폭도 원 1개 기준으로 */
+    &:nth-child(1) {
+      grid-template-columns: minmax(0, 1fr);
+      width: var(--track);
+    }
+
+    h4 {grid-column: 1 / -1;
+      font-size: 1.6rem; font-weight: 600; color: var(--text); margin-bottom: 0.8rem;
+    }
+
+    span {
+      min-width: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 2rem;
+      font-size: 1.4rem; letter-spacing: 0.05em; color: var(--text);
+
+      &::before {content: '';
+        display: block;
+        width: 100%; max-width: var(--circle); aspect-ratio: 1 / 1;
+        border-radius: 50%;
+      }
+
+      /* colorway 데이터 순서에 맞춘 컬러 매핑 */
+      &:nth-of-type(1)::before {background-color: var(--primary);}
+    }
+
+    &:nth-child(2) span {
+      &:nth-of-type(1)::before {background: linear-gradient(135deg, var(--primary), var(--BK));}
+      &:nth-of-type(2)::before {background-color: var(--secondary-ivory);}
+      &:nth-of-type(3)::before {background-color: var(--secondary-red);}
+    }
+  }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* color variation / grayscale
+/* ------------------------------------------------------------------------- */
+.variation-wrap {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  transition: gap 0.3s ease;
+}
+.grayScale-wrap {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 2rem;
+  margin-top: 2rem;
+  transition: gap 0.3s ease;
+}
+.variation-wrap img,
+.grayScale-wrap img {width: 100%; height: auto; display: block; border-radius: 0.8rem;}
+
+
+/* ------------------------------------------------------------------------- */
+/* incorrect usage
+/* ------------------------------------------------------------------------- */
+.inccorect-wrap {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;
+  transition: gap 0.3s ease;
+
+  img {width: 100%; height: auto; display: block; border-radius: 0.8rem;}
+}
+
+
+/* ------------------------------------------------------------------------- */
+/*  Responsive
+/* ------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .sec-con .sub-tit {font-size: 2rem; margin-bottom: 3rem;}
+  .sec-desc {text-align: left; padding-left: 6%; padding-right: 6%;}
+
+  .needs {gap: 2rem;}
+  .needs .needs-list li {font-size: 1.4rem;}
+
+  .kword {--kword-icon: 14rem; --kword-gap: 9rem;}
+  .kword .WT {font-size: 1.8rem;}
+
+  .sig-wrap {max-width: 65rem;}
+  .color-wrap {max-width: 65rem;}
+
+  .variation-wrap { gap: 1.6rem;}
+  .grayScale-wrap { gap: 1.6rem;}
+  .inccorect-wrap {gap: 2rem;}
+}
+
+@media (max-width: 768px) {
+  .sec-desc {padding-left: 3%; padding-right: 3%;}
+
+  .needs img {width: 100%; max-width: 22rem;}
+  .needs .needs-list {margin-top: 2rem;}
+
+  .circleImg {gap: 2rem;}
+  .circleImg img {min-width: 0; width: 25%;}
+
+  .kword-wrap {align-items: center; gap: 5rem;}
+  .kword {--kword-icon: 11rem; --kword-gap: 7rem;}
+  .kword .WT {font-size: 1.6rem;}
+
+  .sig-wrap {max-width: 100%;}
+
+  .color-wrap {max-width: 100%; align-items: flex-start;}
+  .color-wrap .color-item {width: 100%; --circle: 8rem;}
+
+  .variation-wrap {grid-template-columns: repeat(2, 1fr);}
+  .grayScale-wrap {grid-template-columns: repeat(3, 1fr);}
+  .inccorect-wrap {grid-template-columns: repeat(2, 1fr); gap: 1.6rem;}
+}
+
+@media (max-width: 480px) {
+  .sec-desc {padding-left: 0; padding-right: 0;}
+
+  .kword-wrap {gap: 0rem;}
+  .kword {--kword-icon: 9rem; --kword-gap: 6rem;}
+  .kword .WT {font-size: 1.4rem;}
+
+  .color-wrap .color-item {--circle: 6rem;}
+
+  .grayScale-wrap {grid-template-columns: repeat(2, 1fr);}
+}

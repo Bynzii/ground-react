@@ -32,7 +32,7 @@ const addPlant = [
   {id: 3, img: main11, name: '캑터'},
 ]
 
-const HeroRight = () => {
+const HeroRight = ({ scrollRef }) => {
 
   // state
   const [layerOpen, setLayerOpen] = useState(false);
@@ -109,7 +109,7 @@ const HeroRight = () => {
 
 
   return (
-    <div className="hero-wrap right">
+    <div className="hero-wrap right" ref={scrollRef} data-lenis-prevent>
       <div className="hero-vid">
         <video src={mainVid} muted autoPlay loop controls playsInline></video>
       </div>

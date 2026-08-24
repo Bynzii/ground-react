@@ -1,5 +1,5 @@
 import Section from "../components/common/Section";
-// import '../assets/css/About.css'
+import '../assets/css/About.css'
 
 //img
 import miniBanner from '../assets/img/aboutbanner.png'
@@ -95,7 +95,7 @@ const About = () => {
 
       {/* BI */}
       <Section secTitle='BI'>
-      <h4 className="sub-tit">background</h4>
+      <h4 className="sub-tit tal">background</h4>
         <div className="sec-desc">
           <p className="desc">
           코로나19로 집에서 보내는 시간이 많아지게 됐습니다. 여러 가지의 취미 생활이 생기고 사라지게 됐는데 그 중 굳건히 자리잡은 ‘플랜테리어’ , ‘반려식물’이 있습니다. 하지만 직접 구매하러 가는게
@@ -107,7 +107,7 @@ const About = () => {
 
       {/* 키워드 */}
       <Section>
-        <h4 className="sub-tit">BI keywords</h4>
+        <h4 className="sub-tit tal">BI keywords</h4>
         <div className="kword-wrap">
           {kWordData.map((item, idx) => (
             <div className="kword" key={idx}>
@@ -121,7 +121,7 @@ const About = () => {
 
       {/* 시그니처 + 컬러 */}
       <Section>
-        <h4 className="sub-tit">signature</h4>
+        <h4 className="sub-tit tal">signature</h4>
         <div className="sig-wrap">
           <img src={sig} alt="" />
         </div>
@@ -144,7 +144,7 @@ const About = () => {
 
       {/* 컬러 - 베리에이션 */}
       <Section>
-        <h4 className="sub-tit">color variation</h4>
+        <h4 className="sub-tit tal">color variation</h4>
         <div className="variation-wrap">
           {variationData.map((item, idx) => (
             <img src={item} alt="" key={idx} />
@@ -159,7 +159,7 @@ const About = () => {
 
       {/* 로고 - 사용오류 */}
       <Section>
-        <h4 className="sub-tit">incorrect usage</h4>
+        <h4 className="sub-tit tal">incorrect usage</h4>
         <div className="inccorect-wrap">
           {inccorectData.map((item, idx) => (
             <img src={item} alt="" key={idx} />
@@ -170,4 +170,4 @@ const About = () => {
     </div>
   )
 }
-export default About
+export default About 

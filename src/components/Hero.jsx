@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Lenis from "lenis";
 import '../assets/css/Hero.css'
 
 import HeroLeft from './HeroLeft'
@@ -33,6 +34,9 @@ const Hero = () => {
   const [activeTab, setActiveTab] = useState(() => window.innerWidth <= 1024 ? 'left' : null);
   const [hovered, setHovered] = useState(null);
 
+  const leftScrollRef = useRef(null);
+  const rightScrollRef = useRef(null);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 1024) {
@@ -45,6 +49,41 @@ const Hero = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+    // hero 내부 Lenis
+    useEffect(() => {
+      if (!leftScrollRef.current || !rightScrollRef.current) return;
+  
+      const leftLenis = new Lenis({
+        wrapper: leftScrollRef.current,
+        duration: 1.2,
+        smoothWheel: true,
+      });
+  
+      const rightLenis = new Lenis({
+        wrapper: rightScrollRef.current,
+        duration: 1.2,
+        smoothWheel: true,
+      });
+  
+      let rafId;
+  
+      const raf = (time) => {
+        leftLenis.raf(time);
+        rightLenis.raf(time);
+  
+        rafId = requestAnimationFrame(raf);
+      };
+  
+      rafId = requestAnimationFrame(raf);
+  
+      return () => {
+        cancelAnimationFrame(rafId);
+  
+        leftLenis.destroy();
+        rightLenis.destroy();
+      };
+    }, []);
 
   return (
     <>
@@ -72,7 +111,7 @@ const Hero = () => {
               ${activeTab === 'left' ? 'tab-active' : activeTab === 'right' ? 'tab-inactive' : ''}`}
             onMouseEnter={() => { if (!activeTab) setHovered('left'); }}
           >
-            <HeroLeft />
+            <HeroLeft scrollRef={leftScrollRef} />
           </div>
           <div
             className={`hero-hover-wrap 
@@ -80,7 +119,7 @@ const Hero = () => {
               ${activeTab === 'right' ? 'tab-active' : activeTab === 'left' ? 'tab-inactive' : ''}`}
             onMouseEnter={() => { if (!activeTab) setHovered('right'); }}
           >
-            <HeroRight />
+            <HeroRight scrollRef={rightScrollRef}/>
           </div>
         </div>
       </main>
