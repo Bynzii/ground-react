@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ground-react">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
